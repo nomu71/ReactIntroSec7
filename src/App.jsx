@@ -37,55 +37,25 @@ export const App = () => {
 
   return (
     <>
-      <p>2nd Comitt</p>
       <InputTodo
         todoText={todoText}
         onChange={onChangeTodoText}
         onClick={onClickAdd}
+        disabled={incompleteTODOs.length >= 5}
       />
-      {/* <div className="input-area">
-        <input
-          placeholder="TODOを入力"
-          value={todoText}
-          onChange={onChangeTodoText}
-        />
-        <button onClick={onClickAdd}>追加</button>
-      </div> */}
+
+      {incompleteTODOs.length >= 5 && (
+        <p style={{ color: "red" }}>登録できるTODOは５個までです</p>
+      )}
+      <p>現在のTODOは{incompleteTODOs.length}個です</p>
 
       <IncompleteTodos
         todos={incompleteTODOs}
         onClickComplete={onClickComplete}
         onClickDelete={onClickDelete}
       />
-      {/* <div className="incomplete-area">
-        <p className="title">未完了のTODO</p>
-        <ul>
-          {incompleteTODOs.map((todo, index) => {
-            return (
-              <div key={todo} className="list-row">
-                <li>{todo}</li>
-                <button onClick={() => onClickComplete(index)}>完了</button>
-                <button onClick={() => onClickDelete(index)}>削除</button>
-              </div>
-            );
-          })}
-        </ul>
-      </div> */}
 
       <CompleteTODOs todos={completeTODOs} onClickBack={onClickBack} />
-      {/* <div className="complete-area">
-        <p className="title">完了済のTODO</p>
-        <ul>
-          {completeTODOs.map((todo, index) => {
-            return (
-              <div key={todo} className="list-row">
-                <li>{todo}</li>
-                <button onClick={() => onClickBack(index)}>戻す</button>
-              </div>
-            );
-          })}
-        </ul>
-      </div> */}
     </>
   );
 };
