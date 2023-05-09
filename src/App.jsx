@@ -37,6 +37,7 @@ export const App = () => {
 
   return (
     <>
+      <p>2nd Comitt</p>
       <InputTodo
         todoText={todoText}
         onChange={onChangeTodoText}
